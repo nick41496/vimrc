@@ -9,6 +9,8 @@ let mapleader = ","
 set backspace=2
 set splitbelow
 set splitright
+set ignorecase
+set smartcase
 
 set undofile
 set undodir=/Users/nickwhite/.vimundo
@@ -28,8 +30,8 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-set ai
-set si
+set autoindent
+set smartindent
 
 "NERD Tree
 autocmd VimEnter * NERDTree
