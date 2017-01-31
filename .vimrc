@@ -68,7 +68,6 @@ nmap <silent> <F3> :NERDTreeToggle<CR>
 
 "Lightline
 let g:lightline = {
-        \'colorscheme': 'wombat',
         \'separator': { 'left': '', 'right': '' },
         \'subseparator': { 'left': '|', 'right': '|' }
         \}
