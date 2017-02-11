@@ -68,9 +68,10 @@ nmap <silent> <F3> :NERDTreeToggle<CR>
 
 "Lightline
 let g:lightline = { 
+    \ 'colorscheme': 'jellybeans',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], ['ctrlpmark'] ],
-    \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'ctrlpmark' ] ],
+    \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \ },
     \ 'component_function': {
     \   'filename': 'LightlineFilename',
@@ -80,13 +81,8 @@ let g:lightline = {
     \   'mode': 'LightlineMode',
     \   'ctrlpmark': 'CtrlPMark',
     \ },
-    \ 'component_expand': {
-    \   'syntastic': 'SyntasticStatuslineFlag',
-    \ },
-    \ 'component_type': {
-    \   'syntastic': 'error',
-    \ },
-    \ 'subseparator': { 'left': '|', 'right': '|' }
+	\ 'separator': { 'left': '', 'right': '' },
+	\ 'subseparator': { 'left': '', 'right': '' }
     \ }
 
 function! LightlineModified()
