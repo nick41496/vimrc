@@ -171,7 +171,7 @@ let g:vimshell_force_overwrite_statusline = 0
 
 "End lightline
 
-set guifont=Inconsolata\ for\ Powerline:h15
+set guifont=Inconsolata:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 if has("gui_running")
