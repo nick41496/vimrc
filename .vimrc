@@ -9,8 +9,6 @@ let mapleader = ","
 set backspace=2
 set splitbelow
 set splitright
-set ignorecase
-set smartcase
 
 set undofile
 set undodir=/Users/nickwhite/.vimundo
@@ -171,7 +169,7 @@ let g:vimshell_force_overwrite_statusline = 0
 
 "End lightline
 
-set guifont=Inconsolata:h15
+"GUI
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 if has("gui_running")
@@ -184,3 +182,4 @@ else
     set term=xterm-256color
     set termencoding=utf-8
 endif
+"End GUI
