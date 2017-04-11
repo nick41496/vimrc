@@ -9,8 +9,6 @@ let mapleader = ","
 set backspace=2
 set splitbelow
 set splitright
-set ignorecase
-set smartcase
 set colorcolumn=90
 
 set undofile
@@ -175,8 +173,7 @@ let g:vimshell_force_overwrite_statusline = 0
 
 "End lightline
 
-"GUI stuff
-set guifont=Inconsolata:h15
+"GUI
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 if has("gui_running")
@@ -192,11 +189,11 @@ else
     set term=xterm-256color
     set termencoding=utf-8
 endif
-"End GUI stuff
+"End GU
 
-"C stuff
+"C
 augroup C
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
-"End C stuff
+"End C
