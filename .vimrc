@@ -2,7 +2,7 @@ execute pathogen#infect()
 syntax on
 colorscheme monokai
 filetype plugin indent on
-set rnu
+set rnu 
 set noshowmode
 set so=7
 let mapleader = ","
@@ -11,9 +11,13 @@ set splitbelow
 set splitright
 set ignorecase
 set smartcase
+set colorcolumn=90
 
 set undofile
 set undodir=/Users/nickwhite/.vimundo
+
+set go-=m
+set go-=T
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -171,6 +175,7 @@ let g:vimshell_force_overwrite_statusline = 0
 
 "End lightline
 
+"GUI stuff
 set guifont=Inconsolata:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
@@ -180,7 +185,18 @@ if has("gui_running")
     if s:uname == "Darwin\n"
         set guifont=Inconsolata\ for\ Powerline:h15
     endif
+    if s:uname == "Linux\n"
+        set guifont=Hack
+    endif
 else
     set term=xterm-256color
     set termencoding=utf-8
 endif
+"End GUI stuff
+
+"C stuff
+augroup C
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+augroup END
+"End C stuff
