@@ -9,7 +9,7 @@ let mapleader = ","
 set backspace=2
 set splitbelow
 set splitright
-set colorcolumn=90
+set colorcolumn=110
 
 set undofile
 set undodir=/Users/nickwhite/.vimundo
