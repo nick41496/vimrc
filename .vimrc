@@ -65,7 +65,7 @@ function! NERDTreeQuit()
 endfunction
 autocmd WinEnter * call NERDTreeQuit()
 
-nmap <silent> <F3> :NERDTreeToggle<CR>
+nmap <silent> <C-\> :NERDTreeToggle<CR>
 "End NERD Tree
 
 "Lightline
