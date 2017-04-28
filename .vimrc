@@ -12,7 +12,7 @@ set splitright
 set colorcolumn=110
 
 set undofile
-set undodir=/Users/nickwhite/.vimundo
+set undodir=~/.vimundo
 
 set go-=m
 set go-=T
@@ -186,7 +186,6 @@ if has("gui_running")
         set guifont=Hack
     endif
 else
-    set term=xterm-256color
     set termencoding=utf-8
 endif
 "End GU
