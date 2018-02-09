@@ -24,14 +24,15 @@ nnoremap <C-H> <C-W><C-H>
 
 map <leader>vimrc :tabe $MYVIMRC<cr>
 augroup reload_vimrc
-    autocmd!
-    autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
+  autocmd!
+  autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
 augroup END
+
 "Tabs
 set expandtab
 set smarttab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 set autoindent
 set smartindent
@@ -45,7 +46,7 @@ function! NERDTreeQuit()
   redir => buffersoutput
   silent buffers
   redir END
-"                     1BufNo  2Mods.     3File           4LineNo
+  "                     1BufNo  2Mods.     3File           4LineNo
   let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
   let windowfound = 0
 
@@ -70,22 +71,22 @@ nmap <silent> <C-\> :NERDTreeToggle<CR>
 
 "Lightline
 let g:lightline = { 
-    \ 'colorscheme': 'jellybeans',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'ctrlpmark' ] ],
-    \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-    \ },
-    \ 'component_function': {
-    \   'filename': 'LightlineFilename',
-    \   'fileformat': 'LightlineFileformat',
-    \   'filetype': 'LightlineFiletype',
-    \   'fileencoding': 'LightlineFileencoding',
-    \   'mode': 'LightlineMode',
-    \   'ctrlpmark': 'CtrlPMark',
-    \ },
-	\ 'separator': { 'left': '', 'right': '' },
-	\ 'subseparator': { 'left': '', 'right': '' }
-    \ }
+      \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'ctrlpmark' ] ],
+      \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'mode': 'LightlineMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
 
 function! LightlineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -144,9 +145,9 @@ function! CtrlPMark()
 endfunction
 
 let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
+      \ 'main': 'CtrlPStatusFunc_1',
+      \ 'prog': 'CtrlPStatusFunc_2',
+      \ }
 
 function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
   let g:lightline.ctrlp_regex = a:regex
@@ -163,7 +164,7 @@ endfunction
 let g:tagbar_status_func = 'TagbarStatusFunc'
 
 function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
+  let g:lightline.fname = a:fname
   return lightline#statusline(0)
 endfunction
 
@@ -177,22 +178,28 @@ let g:vimshell_force_overwrite_statusline = 0
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 if has("gui_running")
-    set t_Co=256
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-        set guifont=Inconsolata\ for\ Powerline:h15
-    endif
-    if s:uname == "Linux\n"
-        set guifont=Hack
-    endif
+  set t_Co=256
+  if has("win32")
+    set guifont=Inconsolata\ for\ Powerline:h10
+  endif
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    set guifont=Inconsolata\ for\ Powerline:h15
+  endif
+  if s:uname == "Linux\n"
+    set guifont=Hack
+  endif
 else
-    set termencoding=utf-8
+  set termencoding=utf-8
 endif
-"End GU
+"End GUI
 
 "C
 augroup C
-    autocmd!
-    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+  autocmd!
+  autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
 "End C
+
+"JSX
+let g:jsx_ext_required = 0
