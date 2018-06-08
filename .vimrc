@@ -10,6 +10,7 @@ set backspace=2
 set splitbelow
 set splitright
 set colorcolumn=110
+set nowrap
 
 set undofile
 set undodir=~/.vimundo
