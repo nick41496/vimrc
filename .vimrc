@@ -18,6 +18,8 @@ set undodir=~/.vimundo
 set go-=m
 set go-=T
 
+set clipboard=unnamed
+
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -174,6 +176,13 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
 "End lightline
+
+"Ctrl P
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+"End Ctrl P
 
 "GUI
 let g:Powerline_symbols = 'fancy'
