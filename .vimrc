@@ -70,7 +70,6 @@ endfunction
 autocmd WinEnter * call NERDTreeQuit()
 
 nmap <silent> <C-\> :NERDTreeToggle<CR>
-"End NERD Tree
 
 "Lightline
 let g:lightline = { 
@@ -175,14 +174,11 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
-"End lightline
-
 "Ctrl P
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
-"End Ctrl P
 
 "GUI
 let g:Powerline_symbols = 'fancy'
@@ -202,12 +198,18 @@ if has("gui_running")
 else
   set termencoding=utf-8
 endif
-"End GUI
 
 "C
 augroup C
   autocmd!
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
-"End C
 
+"Markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['ruby']
+let g:markdown_syntax_conceal = 0
+let g:markdown_minlines = 200
+
+"Ruby
+autocmd BufNewFile,BufRead *.rb set filetype=ruby
