@@ -40,36 +40,16 @@ set tabstop=2
 set autoindent
 set smartindent
 
-"NERD Tree
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
-autocmd VimEnter * wincmd w
+"netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 10
 
-function! NERDTreeQuit()
-  redir => buffersoutput
-  silent buffers
-  redir END
-  "                     1BufNo  2Mods.     3File           4LineNo
-  let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
-  let windowfound = 0
-
-  for bline in split(buffersoutput, "\n")
-    let m = matchlist(bline, pattern)
-
-    if (len(m) > 0)
-      if (m[2] =~ '..a..')
-        let windowfound = 1
-      endif
-    endif
-  endfor
-
-  if (!windowfound)
-    quitall
-  endif
-endfunction
-autocmd WinEnter * call NERDTreeQuit()
-
-nmap <silent> <C-\> :NERDTreeToggle<CR>
+augroup netrw
+  autocmd!
+  autocmd VimEnter * :Vexplore
+  autocmd VimEnter * wincmd w
+augroup END
 
 "Lightline
 let g:lightline = { 
@@ -175,9 +155,14 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
 "Ctrl P
+let g:ctrlp_use_caching = 1
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+let g:ctrlp_show_hidden = 0
+let g:ctrlp_max_depth = 10
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = 'grep %s'
 endif
 
 "GUI
