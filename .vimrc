@@ -25,6 +25,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+map <leader>app :cd ~/academia/projects/academia-app/<cr>
 map <leader>vimrc :tabe $MYVIMRC<cr>
 augroup reload_vimrc
   autocmd!
@@ -42,14 +43,9 @@ set smartindent
 
 "netrw
 let g:netrw_banner = 0
+let g:netrw_browse_split = 4
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 10
-
-augroup netrw
-  autocmd!
-  autocmd VimEnter * :Vexplore
-  autocmd VimEnter * wincmd w
-augroup END
 
 "Lightline
 let g:lightline = { 
