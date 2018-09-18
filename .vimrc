@@ -2,15 +2,17 @@ execute pathogen#infect()
 syntax on
 colorscheme monokai
 filetype plugin indent on
-set rnu 
+
+set rnu
 set noshowmode
 set so=7
-let mapleader = ","
 set backspace=2
 set splitbelow
 set splitright
-set colorcolumn=110
+set colorcolumn=80,100
 set nowrap
+set list
+set listchars=trail:·
 
 set undofile
 set undodir=~/.vimundo
@@ -20,17 +22,23 @@ set go-=T
 
 set clipboard=unnamed
 
+let mapleader = ","
+
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 map <leader>app :cd ~/academia/projects/academia-app/<cr>
+map <leader>wiki :cd ~/academia/wiki<cr>
 map <leader>vimrc :tabe $MYVIMRC<cr>
 augroup reload_vimrc
   autocmd!
   autocmd bufwritepost $MYVIMRC nested source $MYVIMRC
 augroup END
+
+"Tags
+set tags=./.tags;/,.tags;/
 
 "Tabs
 set expandtab
@@ -47,8 +55,31 @@ let g:netrw_browse_split = 4
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 10
 
+"Swap Windows
+function! MarkWindowSwap()
+  let g:markedWinNum = winnr()
+endfunction
+
+function! DoWindowSwap()
+  "Mark destination
+  let curNum = winnr()
+  let curBuf = bufnr( "%" )
+  exe g:markedWinNum . "wincmd w"
+  "Switch to source and shuffle dest->source
+  let markedBuf = bufnr( "%" )
+  "Hide and open so that we aren't prompted and keep history
+  exe 'hide buf' curBuf
+  "Switch to dest and shuffle source->dest
+  exe curNum . "wincmd w"
+  "Hide and open so that we aren't prompted and keep history
+  exe 'hide buf' markedBuf
+endfunction
+
+nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
+nmap <silent> <leader>pw :call DoWindowSwap()<CR>
+
 "Lightline
-let g:lightline = { 
+let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'ctrlpmark' ] ],
@@ -193,4 +224,8 @@ let g:markdown_syntax_conceal = 0
 let g:markdown_minlines = 200
 
 "Ruby
-autocmd BufNewFile,BufRead *.rb set filetype=ruby
+autocmd BufNewFile,BufRead *.rake set filetype=ruby
+runtime macros/matchit.vim
+
+"Yaml
+autocmd BufNewFile,BufRead *.yml set filetype=yaml
