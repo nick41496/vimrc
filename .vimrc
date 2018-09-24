@@ -11,6 +11,7 @@ set splitbelow
 set splitright
 set colorcolumn=80,100
 set nowrap
+set laststatus=2
 set list
 set listchars=trail:·
 
@@ -224,6 +225,7 @@ let g:markdown_syntax_conceal = 0
 let g:markdown_minlines = 200
 
 "Ruby
+autocmd BufNewFile,BufRead *.rb set filetype=ruby
 autocmd BufNewFile,BufRead *.rake set filetype=ruby
 runtime macros/matchit.vim
 
